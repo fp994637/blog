@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zh-cn">
+<html lang="zh-CN.yml">
 
 
 <head>
@@ -45,7 +45,7 @@
 
 
 
-<body>
+<body >
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -106,7 +106,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/blogs/about" class="waves-effect waves-light">
+    <a href="/blogs/" class="waves-effect waves-light">
       
       <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
@@ -259,7 +259,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/blogs/about" class="waves-effect waves-light">
+		<a href="/blogs/" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
@@ -494,16 +494,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/blogs/">3</a></span>
+    <span class="count"><a href="/blogs/">5</a></span>
     <span class="name">Posts</span>
 </div>
 
 
 
+<div class="statis">
+    <span class="count"><a href="/blogs/categories">2</a></span>
+    <span class="name">Categories</span>
+</div>
+
 
 
 <div class="statis">
-    <span class="count"><a href="/blogs/tags">2</a></span>
+    <span class="count"><a href="/blogs/tags">4</a></span>
     <span class="name">Tags</span>
 </div>
 
@@ -519,16 +524,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/blogs/">3</a></span>
+    <span class="count"><a href="/blogs/">5</a></span>
     <span class="name">Posts</span>
 </div>
 
 
 
+<div class="statis">
+    <span class="count"><a href="/blogs/categories">2</a></span>
+    <span class="name">Categories</span>
+</div>
+
 
 
 <div class="statis">
-    <span class="count"><a href="/blogs/tags">2</a></span>
+    <span class="count"><a href="/blogs/tags">4</a></span>
     <span class="name">Tags</span>
 </div>
 
@@ -672,7 +682,7 @@
                 name: 'Number of posts',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,3],
+                data: [0,0,0,0,0,0,0,0,0,0,0,0,5],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -714,7 +724,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [],
+                data: [{"name":"深度学习","value":2},{"name":"深度学习.核心js代码及思路","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -738,7 +748,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["前端加油站","web"]
+                data: ["javascript","前端加油站","web","思路重要"]
             }
         ],
         yAxis: [
@@ -751,7 +761,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [1,1],
+                data: [1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -1134,6 +1144,6 @@ $(function () {
     <script src="/blogs/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script src="/blogs/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/blogs/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+<script src="/blogs/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/blogs/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
 </html>
