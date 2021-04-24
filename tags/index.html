@@ -354,6 +354,8 @@
                     var typed = new Typed("#subtitle", {
                         strings: [ 
                             
+                                "如果放弃太早，你永远都不知道自己会错过什么。",
+                            
                                 "从来没有真正的绝境, 只有心灵的迷途",
                             
                                 "没有伞的孩子必须努力奔跑！",
@@ -363,8 +365,6 @@
                                 "花开不是为了花落，而是为了开的更加灿烂。",
                             
                                 "欲望以提升热忱，毅力以磨平高山。",
-                            
-                                "如果放弃太早，你永远都不知道自己会错过什么。",
                             
                                 "没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生。",
                             
@@ -384,11 +384,11 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/blogs/medias/banner/" + new Date().getDay() + '.jpg';
+ // 每天切换 banner 图.  Switch banner image every day.
+   var bannerUrl = "/blogs/medias/banner/" + new Date().getDay() + '.jpg';
     $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-
+ </script>
+ 
 
     </div>
 </div>
@@ -406,10 +406,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/blogs/tags/javascript/" title="javascript: 1">
+                <a href="/blogs/tags/%E5%89%8D%E7%AB%AF%E5%8A%A0%E6%B2%B9%E7%AB%99/" title="前端加油站: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="javascript" style="background-color: #F9EBEA;">javascript
+                            data-tagname="前端加油站" style="background-color: #F9EBEA;">前端加油站
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -424,19 +424,10 @@
                 </a>
                 
                 
-                <a href="/blogs/tags/%E5%89%8D%E7%AB%AF%E5%8A%A0%E6%B2%B9%E7%AB%99/" title="前端加油站: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="前端加油站" style="background-color: #D5F5E3;">前端加油站
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/blogs/tags/%E6%80%9D%E8%B7%AF%E9%87%8D%E8%A6%81/" title="思路重要: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="思路重要" style="background-color: #E8F8F5;">思路重要
+                            data-tagname="思路重要" style="background-color: #D5F5E3;">思路重要
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -465,7 +456,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"javascript","weight":1,"link":"/blogs/tags/javascript/"},{"text":"web","weight":1,"link":"/blogs/tags/web/"},{"text":"前端加油站","weight":1,"link":"/blogs/tags/前端加油站/"},{"text":"思路重要","weight":1,"link":"/blogs/tags/思路重要/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"前端加油站","weight":1,"link":"/blogs/tags/前端加油站/"},{"text":"web","weight":1,"link":"/blogs/tags/web/"},{"text":"思路重要","weight":1,"link":"/blogs/tags/思路重要/"}], {
         autoResize: true
     });
 </script>
@@ -531,7 +522,7 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -561,6 +552,50 @@
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "4";
+                    var startDate = "17";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
@@ -771,7 +806,27 @@ $(function () {
     
     <script src="/blogs/libs/instantpage/instantpage.js" type="module"></script>
     
-
+   
+       
 <script src="/blogs/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/blogs/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 
 </html>
+<script>
+        //  <!-- 新增加的代码修改导航栏 -->
+        var OriginTitle = document.title;
+        var titleTime;
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                $('[rel="icon"]').attr('href', "https://sm.ms/image/M5B4Dfz3uRWnTh1");
+                document.title = '我相信你还会回来的！';
+                clearTimeout(titleTime);
+            }
+            else {
+                $('[rel="icon"]').attr('href', "https://sm.ms/image/M5B4Dfz3uRWnTh1");
+                document.title = '哈哈，我就知道！' + OriginTitle;
+                titleTime = setTimeout(function () {
+                    document.title = OriginTitle;
+                }, 2000);
+            }
+        });
+</script>

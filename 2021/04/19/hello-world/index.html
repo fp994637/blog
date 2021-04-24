@@ -482,6 +482,12 @@
                     
 
                         
+                            <div class="post-date info-break-policy">
+                                <i class="far fa-calendar-check fa-fw"></i>
+                                Update Date:&nbsp;&nbsp;
+                                    2021-04-19
+                            </div>
+                            
 
                                 
 
@@ -642,149 +648,138 @@
                                         
 
                                                     
-
-                                                                
-
-                                                                            
-
-                                                                                        
-                                                                                            <style>
-    .twikoo-card {
+                                                        <style>
+    .valine-card {
         margin: 1.5rem auto;
     }
 
-    .twikoo-card .card-content {
-        padding: 20px;
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
     }
 
-    #tcomments textarea {
+    #vcomments textarea {
         box-sizing: border-box;
-        background: url("/blogs/") 100% 100% no-repeat;
+        background: url("/blogs/medias/comment_bg.png") 100% 100% no-repeat;
     }
 
-    #tcomments p {
+    #vcomments p {
         margin: 2px 2px 10px;
         font-size: 1.05rem;
         line-height: 1.78rem;
     }
 
-    #tcomments blockquote p {
+    #vcomments blockquote p {
         text-indent: 0.2rem;
     }
 
-    #tcomments a {
+    #vcomments a {
         padding: 0 2px;
         color: #4cbf30;
         font-weight: 500;
         text-decoration: none;
     }
 
-    #tcomments img {
+    #vcomments img {
         max-width: 100%;
         height: auto;
         cursor: pointer;
     }
 
-    #tcomments ol li {
+    #vcomments ol li {
         list-style-type: decimal;
     }
 
-    #tcomments ol,
+    #vcomments ol,
     ul {
         display: block;
         padding-left: 2em;
         word-spacing: 0.05rem;
     }
 
-    #tcomments ul li,
+    #vcomments ul li,
     ol li {
         display: list-item;
         line-height: 1.8rem;
         font-size: 1rem;
     }
 
-    #tcomments ul li {
+    #vcomments ul li {
         list-style-type: disc;
     }
 
-    #tcomments ul ul li {
+    #vcomments ul ul li {
         list-style-type: circle;
     }
 
-    #tcomments table,
-    th,
-    td {
+    #vcomments table, th, td {
         padding: 12px 13px;
         border: 1px solid #dfe2e5;
     }
 
-    #tcomments table,
-    th,
-    td {
+    #vcomments table, th, td {
         border: 0;
     }
 
-    table tr:nth-child(2n),
-    thead {
+    table tr:nth-child(2n), thead {
         background-color: #fafafa;
     }
 
-    #tcomments table th {
+    #vcomments table th {
         background-color: #f2f2f2;
         min-width: 80px;
     }
 
-    #tcomments table td {
+    #vcomments table td {
         min-width: 80px;
     }
 
-    #tcomments h1 {
+    #vcomments h1 {
         font-size: 1.85rem;
         font-weight: bold;
         line-height: 2.2rem;
     }
 
-    #tcomments h2 {
+    #vcomments h2 {
         font-size: 1.65rem;
         font-weight: bold;
         line-height: 1.9rem;
     }
 
-    #tcomments h3 {
+    #vcomments h3 {
         font-size: 1.45rem;
         font-weight: bold;
         line-height: 1.7rem;
     }
 
-    #tcomments h4 {
+    #vcomments h4 {
         font-size: 1.25rem;
         font-weight: bold;
         line-height: 1.5rem;
     }
 
-    #tcomments h5 {
+    #vcomments h5 {
         font-size: 1.1rem;
         font-weight: bold;
         line-height: 1.4rem;
     }
 
-    #tcomments h6 {
+    #vcomments h6 {
         font-size: 1rem;
         line-height: 1.3rem;
     }
 
-    #tcomments p {
+    #vcomments p {
         font-size: 1rem;
         line-height: 1.5rem;
     }
 
-    #tcomments hr {
+    #vcomments hr {
         margin: 12px 0;
         border: 0;
         border-top: 1px solid #ccc;
     }
 
-    #tcomments blockquote {
+    #vcomments blockquote {
         margin: 15px 0;
         border-left: 5px solid #42b983;
         padding: 1rem 0.8rem 0.3rem 0.8rem;
@@ -792,7 +787,7 @@
         background-color: rgba(66, 185, 131, .1);
     }
 
-    #tcomments pre {
+    #vcomments pre {
         font-family: monospace, monospace;
         padding: 1.2em;
         margin: .5em 0;
@@ -802,7 +797,7 @@
         tab-size: 4;
     }
 
-    #tcomments code {
+    #vcomments code {
         font-family: monospace, monospace;
         padding: 1px 3px;
         font-size: 0.92rem;
@@ -811,25 +806,24 @@
         border-radius: 2px;
     }
 
-    #tcomments pre code {
+    #vcomments pre code {
         font-family: monospace, monospace;
         padding: 0;
         color: #e8eaf6;
         background-color: #272822;
     }
 
-    #tcomments pre[class*="language-"] {
+    #vcomments pre[class*="language-"] {
         padding: 1.2em;
         margin: .5em 0;
     }
 
-    #tcomments code[class*="language-"],
+    #vcomments code[class*="language-"],
     pre[class*="language-"] {
         color: #e8eaf6;
     }
 
-    #tcomments [type="checkbox"]:not(:checked),
-    [type="checkbox"]:checked {
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
         position: inherit;
         margin-left: -1.3rem;
         margin-right: 0.4rem;
@@ -839,51 +833,47 @@
         visibility: visible;
     }
 
-    #tcomments b,
+    #vcomments b,
     strong {
         font-weight: bold;
     }
 
-    #tcomments dfn {
+    #vcomments dfn {
         font-style: italic;
     }
 
-    #tcomments small {
+    #vcomments small {
         font-size: 85%;
     }
 
-    #tcomments cite {
+    #vcomments cite {
         font-style: normal;
     }
 
-    #tcomments mark {
+    #vcomments mark {
         background-color: #fcf8e3;
         padding: .2em;
     }
 
-    #tcomments table,
-    th,
-    td {
+    #vcomments table, th, td {
         padding: 12px 13px;
         border: 1px solid #dfe2e5;
     }
 
-    table tr:nth-child(2n),
-    thead {
+    table tr:nth-child(2n), thead {
         background-color: #fafafa;
     }
 
-    #tcomments table th {
+    #vcomments table th {
         background-color: #f2f2f2;
         min-width: 80px;
     }
 
-    #tcomments table td {
+    #vcomments table td {
         min-width: 80px;
     }
 
-    #tcomments [type="checkbox"]:not(:checked),
-    [type="checkbox"]:checked {
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
         position: inherit;
         margin-left: -1.3rem;
         margin-right: 0.4rem;
@@ -894,34 +884,42 @@
     }
 </style>
 
-<div class="card twikoo-card" data-aos="fade-up">
+<div class="card valine-card" data-aos="fade-up">
     <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
         <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
         <span>评论</span>
     </div>
-    <div class="card-content" style="display: grid">
-        <div id="tcomments"></div>
+    <div id="vcomments" class="card-content" style="display: grid">
     </div>
 </div>
 
-<script src="/blogs/libs/twikoo/twikoo.all.min.js"></script>
+<script src="/blogs/libs/valine/av-min.js"></script>
+<script src="/blogs/libs/valine/Valine.min.js"></script>
 <script>
-    twikoo.init({
-        envId: 'twikoo-1gs9l0fb17e7897a',
-        el: '#tcomments',
-        region: '',
-        path: ''
-    }).then(function () {
-        var tkInputs = document.querySelector('#twikoo').getElementsByTagName('input');
-        for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
-            if (tkInputs[tkInputsIndex]) {
-                tkInputs[tkInputsIndex].classList.add('browser-default');
-            }
-        }
+    new Valine({
+        el: '#vcomments',
+        appId: 'csXeKQK5aCimndgGQdPqlMdU-MdYXbMMI',
+        appKey: 'xuG26POgmoHjQyx3JiCSpEKy',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: '',
+        pageSize: '3',
+        lang: 'en',
+        placeholder: 'just go go'
     });
 </script>
 
-                                                                                                
+<!--酷Q推送-->
+
+
+                                                            
+
+                                                                
+
+                                                                            
+
+                                                                                        
 
                                                                                                     
 
@@ -932,13 +930,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/blogs/2021/04/20/%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/">
+                <a href="/blogs/2021/04/20/strateg-web/">
                     <div class="card-image">
                         
                         
-                        <img src="/blogs/medias/featureimages/8.jpg" class="responsive-img" alt="原生JS实现轮播图详细含源码">
+                        <img src="/blogs/medias/featureimages/8.jpg" class="responsive-img" alt="15个前端必备的学习网站 |（附视频介绍）">
                         
-                        <span class="card-title">原生JS实现轮播图详细含源码</span>
+                        <span class="card-title">15个前端必备的学习网站 |（附视频介绍）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -955,13 +953,21 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blogs/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%A0%B8%E5%BF%83js%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%80%9D%E8%B7%AF/" class="post-category">
-                                    深度学习.核心js代码及思路
+                            <a href="/blogs/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blogs/tags/%E6%80%9D%E8%B7%AF%E9%87%8D%E8%A6%81/">
+                        <span class="chip bg-color">思路重要</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1019,6 +1025,45 @@
 </div>
 
 
+    <script>
+        $('#articleContent').on('copy', function(e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('120')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />' +
+                'From: 消逝の博客<br />' +
+                'Author: 冯攀<br />' +
+                'Link: <a href="' + url + '">' + url + '</a><br />' +
+                '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function() {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+    
 
         <!-- 代码块功能依赖 -->
         <script type="text/javascript" src="/blogs/libs/codeBlock/codeBlockFuction.js"></script>
@@ -1218,7 +1263,7 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1248,6 +1293,50 @@
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "4";
+                    var startDate = "17";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
@@ -1458,7 +1547,27 @@ $(function () {
     
     <script src="/blogs/libs/instantpage/instantpage.js" type="module"></script>
     
-
+   
+       
 <script src="/blogs/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/blogs/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 
 </html>
+<script>
+        //  <!-- 新增加的代码修改导航栏 -->
+        var OriginTitle = document.title;
+        var titleTime;
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                $('[rel="icon"]').attr('href', "https://sm.ms/image/M5B4Dfz3uRWnTh1");
+                document.title = '我相信你还会回来的！';
+                clearTimeout(titleTime);
+            }
+            else {
+                $('[rel="icon"]').attr('href', "https://sm.ms/image/M5B4Dfz3uRWnTh1");
+                document.title = '哈哈，我就知道！' + OriginTitle;
+                titleTime = setTimeout(function () {
+                    document.title = OriginTitle;
+                }, 2000);
+            }
+        });
+</script>
