@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="实现倒计时效果, 消逝の博客">
+    <meta name="keywords" content="什么是防抖和节流？有什么区别？如何实现？, 消逝の博客">
     <meta name="description" content="记录生活">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>实现倒计时效果 | 消逝の博客</title>
+    <title>什么是防抖和节流？有什么区别？如何实现？ | 消逝の博客</title>
     <link rel="icon" type="image/png" href="/blog/favicon.jpeg.icon.png">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.css">
@@ -339,12 +339,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">实现倒计时效果</h1>
+                    <h1 class="description center-align post-title">什么是防抖和节流？有什么区别？如何实现？</h1>
                 </div>
             </div>
         </div>
@@ -458,10 +458,14 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                            <div class="article-tag">
-                                <span class="chip bg-color">无标签</span>
-                            </div>
+                        <div class="article-tag">
                             
+                                <a href="/blog/tags/%E5%89%8D%E7%AB%AF%E5%8A%A0%E6%B2%B9%E7%AB%99/">
+                                    <span class="chip bg-color">前端加油站</span>
+                                </a>
+                                
+                        </div>
+                        
                 </div>
                 <div class="col s5 right-align">
                     
@@ -481,7 +485,7 @@
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>
                                 更新日期:&nbsp;&nbsp;
-                                    2021-04-25
+                                    2021-04-24
                             </div>
                             
 
@@ -508,7 +512,92 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                
+                                <h2 id="一、防抖"><a href="#一、防抖" class="headerlink" title="一、防抖"></a>一、防抖</h2><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>场景：在滚动事件中需要做个复杂计算或者实现一个按钮的防二次点击操作。这些需求都可以通过函数防抖动来实现。尤其是第一个需求，如果在频繁的事件回调中做复杂计算，很有可能导致页面卡顿，不如将多次计算合并为一次计算，只在一个精确点做操作。
+一般的防抖会有immediate选项，表示是否立即调用
+</code></pre>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 这个是用来获取当前时间戳的</span>
+<span class="token keyword">function</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/**
+ * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
+ *
+ * @param  {function} func        回调函数
+ * @param  {number}   wait        表示时间窗口的间隔
+ * @param  {boolean}  immediate   设置为ture时，是否立即调用函数
+ * @return {function}             返回客户调用函数
+ */</span>
+<span class="token keyword">function</span> debounce <span class="token punctuation">(</span>func<span class="token punctuation">,</span> wait <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">,</span> immediate <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> timer<span class="token punctuation">,</span> context<span class="token punctuation">,</span> args
+
+  <span class="token comment" spellcheck="true">// 延迟执行函数</span>
+  <span class="token keyword">const</span> later <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 延迟函数执行完毕，清空缓存的定时器序号</span>
+    timer <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token comment" spellcheck="true">// 延迟执行的情况下，函数会在延迟函数中执行</span>
+    <span class="token comment" spellcheck="true">// 使用到之前缓存的参数和上下文</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      func<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+      context <span class="token operator">=</span> args <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+
+  <span class="token comment" spellcheck="true">// 这里返回的函数是每次实际调用的函数</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token operator">...</span>params<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 如果没有创建延迟执行函数（later），就创建一个</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>timer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      timer <span class="token operator">=</span> <span class="token function">later</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true">// 如果是立即执行，调用函数</span>
+      <span class="token comment" spellcheck="true">// 否则缓存参数和调用上下文</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        func<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> params<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        context <span class="token operator">=</span> <span class="token keyword">this</span>
+        args <span class="token operator">=</span> params
+      <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个</span>
+    <span class="token comment" spellcheck="true">// 这样做延迟函数会重新计时</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
+      timer <span class="token operator">=</span> <span class="token function">later</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>整体函数实现的不难，总结一下。</p>
+<p>1.对于按钮防点击来说的实现：如果函数是立即执行的，就立即调用，如果函数是延迟执行的，就缓存上下文和参数，放到延迟函数中去执行。一旦我开始一个定时器，只要我定时器还在，你每次点击我都重新计时。一旦你点累了，定时器时间到，定时器重置为 null，就可以再次点击了。</p>
+<p>2.对于延时执行函数来说的实现：清除定时器ID，如果是延迟调用就调用函数</p>
+<h2 id="二、节流"><a href="#二、节流" class="headerlink" title="二、节流"></a>二、节流</h2><blockquote>
+<p>防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。</p>
+</blockquote>
+<blockquote>
+<p>高频事件触发，但在 n 秒内只会执行一次，所以节流会稀释函数的执行频率。</p>
+</blockquote>
+<blockquote>
+<p>思路：每次触发事件时都判断当前是否有等待执行的延时函数。</p>
+</blockquote>
+<pre class="line-numbers language-js"><code class="language-js">
+<span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">let</span> canRun <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 通过闭包保存一个标记</span>
+     <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>canRun<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在函数开头判断标记是否为 true，不为 true 则 return</span>
+       canRun <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 立即设置为 false</span>
+       <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 将外部传入的函数的执行放在 setTimeout 中</span>
+         fn<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token comment" spellcheck="true">// 最后在 setTimeout 执行完毕后再把标记设置为 true(关键) </span>
+         <span class="token comment" spellcheck="true">//表示可以执行下一次循环了。当定时器没有执行的时候</span>
+         <span class="token comment" spellcheck="true">//标记永远是 false，在开头被 return 掉</span>
+         canRun <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>innerWidth<span class="token punctuation">,</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>innerHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'resize'</span><span class="token punctuation">,</span> <span class="token function">throttle</span><span class="token punctuation">(</span>sayHi<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                                     
                             </div>
                             <hr/>
@@ -534,7 +623,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fp994637.github.io/blog/blog/about/index.html">https://fp994637.github.io/blog/blog/about/index.html</a>
+                    <a href="https://fp994637.github.io/blog/blog/2021/04/20/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/">https://fp994637.github.io/blog/blog/2021/04/20/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -570,10 +659,14 @@
                                 <div class="tag_share" style="display: block;">
                                     <div class="post-meta__tag-list" style="display: inline-block;">
                                         
-                                                <div class="article-tag">
-                                                    <span class="chip bg-color">无标签</span>
-                                                </div>
+                                            <div class="article-tag">
                                                 
+                                                    <a href="/blog/tags/%E5%89%8D%E7%AB%AF%E5%8A%A0%E6%B2%B9%E7%AB%99/">
+                                                        <span class="chip bg-color">前端加油站</span>
+                                                    </a>
+                                                    
+                                            </div>
+                                            
                                     </div>
                                     <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                                         <link rel="stylesheet" type="text/css" href="/blog/libs/share/css/share.min.css">
@@ -881,18 +974,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/blog/about/index.html">
+                <a href="/blog/2021/04/20/slideshow/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/23.jpg" class="responsive-img" alt="实现倒计时效果">
+                        <img src="/blog/medias/featureimages/8.jpg" class="responsive-img" alt="原生JS实现轮播图详细含源码">
                         
-                        <span class="card-title">实现倒计时效果</span>
+                        <span class="card-title">原生JS实现轮播图详细含源码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -902,18 +994,21 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-20
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            冯攀
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%A0%B8%E5%BF%83js%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%80%9D%E8%B7%AF/" class="post-category">
+                                    深度学习.核心js代码及思路
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -921,16 +1016,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/about/index.html">
+                <a href="/blog/2021/04/19/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/23.jpg" class="responsive-img" alt="实现倒计时效果">
+                        <img src="/blog/medias/featureimages/20.jpg" class="responsive-img" alt="最快速地搭建炫丽的个人网站or博客">
                         
-                        <span class="card-title">实现倒计时效果</span>
+                        <span class="card-title">最快速地搭建炫丽的个人网站or博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -941,7 +1036,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-19
                             </span>
                         <span class="publish-author">
                             
@@ -951,7 +1046,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/web/">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
